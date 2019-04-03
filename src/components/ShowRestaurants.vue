@@ -1,28 +1,33 @@
 <template>
-  <div class="row">
-    <div v-for="restaurant in restaurants" :key="restaurant.RestaurantID" class="col-sm-4" id="res">
-      <img :alt="restaurant.RestaurantName" :src="abc" style="width:200px;height:200px">
-      <br>
+  <div>
+    <div v-for="restaurant in restaurants" :key="restaurant.RestaurantID" class="row" id="res">
+      <div class="col-sm-4" style="width: 400px">
+        <img :alt="restaurant.RestaurantName" :src="abc" style="width:200px;height:200px">
+        <br>
 
-      <label for>Restaurant Name:</label>
-      <span>{{restaurant.RestaurantName}}</span>
-      <br>
+        <label for>Restaurant Name:</label>
+        <span>{{restaurant.RestaurantName}}</span>
+        <br><br>
 
-      <label for>Restaurant Cuisines:</label>
-      <span>{{restaurant.Cuisines}}</span>
-      <br>
+        <label for>Restaurant Cuisines:</label>
+        <span>{{restaurant.Cuisines}}</span>
+        <br><br>
 
-      <label for>Restaurant Cost:</label>
-      <span>{{restaurant.AverageCostForTwo}}</span>
-      <br>
+        <label for>Restaurant Cost:</label>
+        <span>{{restaurant.AverageCostForTwo}}</span>
+        <br><br>
 
-      <label for>Restaurant Rating:</label>
-      <span>{{restaurant.RatingText}}</span>
-      <br>
+        <label for>Restaurant Rating:</label>
+        <span>{{restaurant.RatingText}}</span>
+        <br><br>
 
-      <label for>Restaurant Votes:</label>
-      <span>{{restaurant.Votes}}</span>
-      <br>
+        <label for>Restaurant Votes:</label>
+        <span>{{restaurant.Votes}}</span>
+        <br>
+      </div>
+      <div class="col-sm-4">
+        <showMap :restaurantID="restaurant.RestaurantID" />
+      </div>
     </div>
   </div>
 </template>
@@ -31,8 +36,12 @@
 
 
 <script>
+import showMap from './showMap';
 export default {
-  props: ["restaurants"]
+  props: ["restaurants"],
+  components: {
+    showMap
+  }
 };
 </script>
 
@@ -43,15 +52,17 @@ export default {
 #res {
   margin: 20px;
 
+  margin-left: 7vw;
+
   border: 6px solid grey;
 
   border-radius: 20px;
 
   padding: 10px;
 
-  width: 250px;
+  width: 750px;
 
-  height: 250px;
+  height: 330px;
 
   float: left;
 

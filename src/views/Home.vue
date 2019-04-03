@@ -20,37 +20,24 @@ export default {
 <template>
   <div id="restaurants">
     <div class="container">
-      <div v-on:keyup.enter="getRestaurantForTheCuisine" @click="resetsc">
-        <label>Search for Cuisines:</label>
-        <input type="text" placeholder="enter any cuisines" v-model="cuisine">
-
-        <input type="button" value="search" @click="getRestaurantForTheCuisine">
-        <br>
-
-        <p class="alert alert-warning" v-if="noCuisine">
-          You are searching for none
-        </p>
-        <br>
-      </div>
-
-      <p style="color:blue">or select cuisine from checkbox</p>
-      <br>
-
       <div class="row">
-        <div id="sc" @click="resetcu" class="col-sm-4">
-          <div v-for="cuis in Cuisines" :key="cuis" >
-            <input
-              type="checkbox"
-              :value="cuis"
-              v-model="selectedCuisine"
-              style="float: left"
-            />
-            <span style="float:left">{{cuis}}</span>
-            <br/>
+        <div class="col-sm-12 col-xs-12">
+          <div v-on:keyup.enter="getRestaurantForTheCuisine" @click="resetsc">
+            <label>Search for Cuisines:</label>
+            <input type="text" placeholder="enter any cuisines" v-model="cuisine">
+
+            <input type="button" value="search" @click="getRestaurantForTheCuisine">
+            <br>
+
+            <p class="alert alert-warning" v-if="noCuisine">You are searching for none</p>
+            <br>
           </div>
         </div>
 
-        <div class="col-sm-4">
+        <p style="color:blue">or select cuisine from checkbox</p>
+        <br>
+
+        <div class="col-sm-12 col-xs-12">
           <span>order by {{selected}}</span>
           <br>
 
@@ -72,12 +59,23 @@ export default {
         </div>
       </div>
 
-      <div>
-        <p style="color:blue">
-          {{numOfCuisineRest}} Restaurants are found
-        </p>
+      <br>
 
-        <ShowRestaurants :restaurants="restaurantForTheCuisine"/>
+      <div class="row">
+        <p style="color:blue">{{numOfCuisineRest}} Restaurants are found</p>
+      </div>
+      <div class="row">
+        <div id="sc" @click="resetcu" class="col-sm-4">
+          <div v-for="cuis in Cuisines" :key="cuis">
+            <input type="checkbox" :value="cuis" v-model="selectedCuisine" style="float: left">
+            <span style="float:left">{{cuis}}</span>
+            <br>
+          </div>
+        </div>
+
+        <div class="col-sm-8 col-xs-12">
+          <ShowRestaurants :restaurants="restaurantForTheCuisine"/>
+        </div>
       </div>
     </div>
   </div>
@@ -215,7 +213,7 @@ export default {
           this.AscDsc = oldVal;
         } else if (val == "DSC") {
           this.restaurantForTheCuisine.reverse();
-        } else if (val == 'ASC'){
+        } else if (val == "ASC") {
           this.restaurantForTheCuisine.reverse();
         }
       }
@@ -223,9 +221,6 @@ export default {
   }
 };
 </script>
-
-
-
 
 <style>
 #restaurants {
@@ -238,7 +233,7 @@ export default {
   background-color: rgba(19, 83, 179, 0.404);
 }
 #sc {
-  height: 200px;
+  height: 400px;
 
   width: 250px;
 
