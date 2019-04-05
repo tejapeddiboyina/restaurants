@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="restaurant in restaurants" :key="restaurant.RestaurantID" class="row" id="res">
-      <div class="col-sm-4" style="width: 400px">
+      <div class="col-sm-8">
         <img :alt="restaurant.RestaurantName" :src="abc" style="width:200px;height:200px">
         <br>
 
@@ -50,9 +50,7 @@ export default {
 
 <style>
 #res {
-  margin: 20px;
-
-  margin-left: 7vw;
+  margin: 10px;
 
   border: 6px solid grey;
 
@@ -60,11 +58,7 @@ export default {
 
   padding: 10px;
 
-  width: 750px;
-
-  height: 330px;
-
-  float: left;
+  width: 100%;
 
   background-color: rgb(201, 139, 139);
 }

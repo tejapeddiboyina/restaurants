@@ -65,7 +65,7 @@ export default {
         <p style="color:blue">{{numOfCuisineRest}} Restaurants are found</p>
       </div>
       <div class="row">
-        <div id="sc" @click="resetcu" class="col-sm-4">
+        <div id="sc" @click="resetcu" class="col-sm-3">
           <div v-for="cuis in Cuisines" :key="cuis">
             <input type="checkbox" :value="cuis" v-model="selectedCuisine" style="float: left">
             <span style="float:left">{{cuis}}</span>
@@ -73,7 +73,7 @@ export default {
           </div>
         </div>
 
-        <div class="col-sm-8 col-xs-12">
+        <div class="col-sm-9 col-xs-12">
           <ShowRestaurants :restaurants="restaurantForTheCuisine"/>
         </div>
       </div>
@@ -234,8 +234,6 @@ export default {
 }
 #sc {
   height: 400px;
-
-  width: 250px;
 
   overflow-y: scroll;
 }

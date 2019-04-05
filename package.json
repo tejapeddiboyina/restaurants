@@ -5,10 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "node ./node_modules/vue-gh-pages/index.js"
   },
+  "homepage": "https://github.com/tejapeddiboyina/restaurants",
   "dependencies": {
     "vue": "^2.6.6",
+    "vue-gh-pages": "^1.19.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
