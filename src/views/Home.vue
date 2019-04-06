@@ -213,7 +213,7 @@ export default {
           this.AscDsc = oldVal;
         } else if (val == "DSC") {
           this.restaurantForTheCuisine.reverse();
-        } else if (val == "ASC") {
+        } else if (val == "ASC" && oldVal == "DSC") {
           this.restaurantForTheCuisine.reverse();
         }
       }
