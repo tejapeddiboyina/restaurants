@@ -11,7 +11,7 @@ export default {
     props: ["cuisine"],
     data() {
         return {
-            selectedCuisines: [],
+            selectedCuisines: require('../data/Cuisines.js'),
             cuisines: require('../data/Cuisines.js')
         }
     },
