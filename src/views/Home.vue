@@ -25,37 +25,37 @@ export default {
           <div v-on:keyup.enter="getRestaurantForTheCuisine" @click="resetsc">
             <label>Search for Cuisines:</label>
             <input type="text" placeholder="enter any cuisines" v-model="cuisine">
-
-            <input type="button" value="search" @click="getRestaurantForTheCuisine">
             <br>
 
             <p class="alert alert-warning" v-if="noCuisine">You are searching for none</p>
             <br>
           </div>
+          <showCuisines v-if="showCuisine" :cuisine="cuisine" @replaceCuisine="changeCuisine"/>
         </div>
-
-        <p style="color:blue">or select cuisine from checkbox</p>
-        <br>
-
-        <div class="col-sm-12 col-xs-12">
-          <span>order by {{selected}}</span>
+        <div class="col-sm-12 col-xs-12" @click="() => showCuisine = false">
+          <p style="color:blue">or select cuisine from checkbox</p>
           <br>
 
-          <select v-model="selected">
-            <option disabled value=" ">Please select one</option>
+          <div class="col-sm-12 col-xs-12">
+            <span>order by {{selected}}</span>
+            <br>
 
-            <option>Cost</option>
+            <select v-model="selected">
+              <option disabled value=" ">Please select one</option>
 
-            <option>Rating</option>
+              <option>Cost</option>
 
-            <option>Votes</option>
-          </select>
+              <option>Rating</option>
 
-          <select v-model="AscDsc">
-            <option>ASC</option>
+              <option>Votes</option>
+            </select>
 
-            <option>DSC</option>
-          </select>
+            <select v-model="AscDsc">
+              <option>ASC</option>
+
+              <option>DSC</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -86,10 +86,12 @@ export default {
 
 <script>
 import ShowRestaurants from "@/components/ShowRestaurants";
+import showCuisines from "@/components/showCuisines";
 
 export default {
   components: {
-    ShowRestaurants
+    ShowRestaurants,
+    showCuisines
   },
 
   data() {
@@ -110,7 +112,9 @@ export default {
 
       selected: "",
 
-      AscDsc: ""
+      AscDsc: "",
+
+      showCuisine: false
     };
   },
 
@@ -123,8 +127,15 @@ export default {
       }
     },
 
+    changeCuisine(val) {
+      this.cuisine = val;
+      this.showCuisine = false;
+    },
+
     resetsc() {
       this.selectedCuisine = [];
+      this.showCuisine = true;
+      this.cuisine = "";
     },
 
     resetcu() {
